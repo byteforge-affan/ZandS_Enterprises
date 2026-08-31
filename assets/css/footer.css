@@ -358,21 +358,14 @@
 
 .zs-social-btn {
   display: flex;
-
   align-items: center;
   justify-content: center;
-
   width: 36px;
   height: 36px;
-
   border: 1px solid var(--zs-border);
-
   border-radius: 10px;
-
   background: rgba(244, 240, 231, 0.025);
-
-  color: var(--zs-text-muted);
-
+  color: var(--zs-ivory);
   transition:
     color 200ms var(--zs-ease),
     background 200ms var(--zs-ease),
