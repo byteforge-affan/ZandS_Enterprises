@@ -1,0 +1,204 @@
+/* ==========================================================================
+   Z&S ENTERPRISES — LEGAL PAGES (Privacy Policy / Terms & Conditions)
+   Reuses brand tokens defined in style.css (:root). No new colors/fonts.
+   ========================================================================== */
+
+.zs-legal-page {
+  padding-top: var(--zs-nav-clearance);
+  background: var(--zs-cream);
+}
+
+/* ---- Hero ---- */
+.zs-legal-hero {
+  padding: 56px 0 40px;
+  border-bottom: 1px solid var(--zs-line);
+}
+
+.zs-legal-hero-title {
+  margin-top: 16px;
+  font-size: clamp(34px, 5vw, 56px);
+}
+
+.zs-legal-hero-updated {
+  display: block;
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--zs-charcoal-soft);
+}
+
+/* ---- Review notice banner ---- */
+.zs-legal-notice {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-top: 28px;
+  padding: 16px 20px;
+  border: 1px solid var(--zs-gold-line);
+  background: rgba(201, 166, 107, 0.08);
+  border-radius: 10px;
+  max-width: 760px;
+}
+
+.zs-legal-notice svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--zs-mocha-warm);
+}
+
+.zs-legal-notice p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--zs-charcoal-soft);
+}
+
+.zs-legal-notice strong {
+  color: var(--zs-charcoal);
+}
+
+/* ---- Body layout: TOC + content ---- */
+.zs-legal-body {
+  padding: 56px 0 96px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.zs-legal-toc {
+  position: sticky;
+  top: calc(var(--zs-nav-clearance) + 24px);
+}
+
+.zs-legal-toc-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--zs-mocha-warm);
+  margin-bottom: 14px;
+}
+
+.zs-legal-toc-list li + li { margin-top: 2px; }
+
+.zs-legal-toc-list a {
+  display: block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--zs-charcoal-soft);
+  border-left: 2px solid transparent;
+  transition: background 200ms var(--zs-ease), color 200ms var(--zs-ease), border-color 200ms var(--zs-ease);
+}
+
+.zs-legal-toc-list a:hover,
+.zs-legal-toc-list a:focus-visible {
+  color: var(--zs-charcoal);
+  background: var(--zs-sand);
+  border-left-color: var(--zs-gold);
+}
+
+.zs-legal-toc-list a:focus-visible {
+  outline: 2px solid var(--zs-gold);
+  outline-offset: 2px;
+}
+
+/* ---- Content ---- */
+.zs-legal-content { max-width: 760px; }
+
+.zs-legal-section {
+  padding-top: 40px;
+  margin-top: 40px;
+  border-top: 1px solid var(--zs-line-soft);
+  scroll-margin-top: calc(var(--zs-nav-clearance) + 20px);
+}
+
+.zs-legal-section:first-child {
+  padding-top: 0;
+  margin-top: 0;
+  border-top: none;
+}
+
+.zs-legal-section-title {
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+.zs-legal-section p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--zs-charcoal-soft);
+  margin-bottom: 14px;
+}
+
+.zs-legal-section p:last-child { margin-bottom: 0; }
+
+.zs-legal-section ul {
+  margin: 0 0 14px;
+  padding: 0;
+}
+
+.zs-legal-section ul li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--zs-charcoal-soft);
+  margin-bottom: 8px;
+}
+
+.zs-legal-section ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--zs-gold);
+}
+
+.zs-legal-section a { color: var(--zs-mocha-warm); text-decoration: underline; text-underline-offset: 2px; }
+.zs-legal-section a:hover { color: var(--zs-charcoal); }
+
+.zs-legal-contact-block {
+  margin-top: 6px;
+  padding: 18px 20px;
+  background: var(--zs-sand);
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--zs-charcoal-soft);
+}
+
+.zs-legal-contact-block a { color: var(--zs-charcoal); }
+
+/* ---- Footer CTA ---- */
+.zs-legal-cta {
+  margin-top: 48px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .zs-legal-body {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .zs-legal-toc {
+    position: static;
+    border: 1px solid var(--zs-line);
+    border-radius: 10px;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .zs-legal-hero { padding: 44px 0 32px; }
+  .zs-legal-body { padding: 40px 0 64px; }
+}

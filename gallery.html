@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Packaging Studio | Z&amp;S Enterprises Karachi</title>
+<meta name="description" content="Explore the Z&S Enterprises Packaging Studio — an interactive look at structures, finishes and the process behind corrugated, printed and die-cut packaging made in Karachi, Pakistan.">
+<meta property="og:title" content="Packaging Studio | Z&amp;S Enterprises Karachi">
+<meta property="og:description" content="Explore the Z&S Enterprises Packaging Studio — an interactive look at structures, finishes and the process behind corrugated, printed and die-cut packaging made in Karachi, Pakistan.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.zspackages.com/gallery.html">
+<meta property="og:image" content="https://www.zspackages.com/assets/img/logo.png">
+<meta property="og:site_name" content="Z&amp;S Enterprises">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Packaging Studio | Z&amp;S Enterprises Karachi">
+<meta name="twitter:description" content="Explore the Z&S Enterprises Packaging Studio — an interactive look at structures, finishes and the process behind corrugated, printed and die-cut packaging made in Karachi, Pakistan.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0d1120">
+<link rel="canonical" href="https://www.zspackages.com/gallery.html">
+<link rel="icon" href="/assets/img/favicon-64.png" type="image/png" sizes="64x64">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/navbar.css">
+  <link rel="stylesheet" href="/assets/css/style.css">  <link rel="stylesheet" href="/assets/css/responsive.css">  <link rel="stylesheet" href="/assets/css/footer.css">
+<link rel="stylesheet" href="/assets/css/studio.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Manufacturer",
+  "name": "Z&S Enterprises",
+  "url": "https://www.zspackages.com/",
+  "logo": "https://www.zspackages.com/assets/img/logo.png",
+  "description": "Custom corrugated, printed and die-cut packaging manufacturer serving pharmaceutical, food, cosmetics, retail and export businesses in Pakistan.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Plot ST 17, Block 02, Bhangoria Goth FB Area",
+    "addressLocality": "Karachi",
+    "addressCountry": "PK"
+  },
+  "telephone": "+92-300-2769113",
+  "email": "zandsenterprises.pk@gmail.com",
+  "sameAs": []
+}
+</script>
+</head>
+<body>
+
+<div id="navbar-container"></div>
+<main class="zs-studio">
+
+  <!-- ============================================================
+       01 — HERO — ENTER THE STUDIO (flat sheet -> folded package,
+       scroll-linked via --fold custom property, driven by studio.js)
+       ============================================================ -->
+  <section class="zs-ps-hero" data-ps-hero>
+    <div class="zs-ps-hero-grid" aria-hidden="true"></div>
+
+    <div class="zs-studio-container zs-ps-hero-inner">
+      <div class="zs-ps-hero-copy">
+        <span class="zs-ps-hero-eyebrow">Z&amp;S Enterprises · Packaging Studio</span>
+        <h1 class="zs-ps-hero-title">
+          <span>FLAT SHEET.</span>
+          <span>FOLDED <em>FORM.</em></span>
+        </h1>
+        <p class="zs-ps-hero-sub">Every box Z&amp;S makes starts as a flat sheet of board. Scroll to watch it fold — then step through the structures, finishes and process behind it.</p>
+        <button type="button" class="zs-ps-hero-scroll">
+          <span class="zs-ps-hero-scroll-track"></span>
+          Scroll To Fold It
+        </button>
+      </div>
+
+      <div class="zs-ps-fold-stage">
+        <div class="zs-ps-fold-sheet">
+          <div class="zs-ps-flap zs-ps-flap-base"></div>
+          <div class="zs-ps-flap zs-ps-flap-top"></div>
+          <div class="zs-ps-flap zs-ps-flap-left"></div>
+          <div class="zs-ps-flap zs-ps-flap-right"></div>
+        </div>
+        <span class="zs-ps-fold-label">State: <span class="zs-ps-fold-state" data-ps-fold-state>Flat</span></span>
+        <span class="zs-ps-hero-hint">Scroll-linked</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       02 — STRUCTURE LAB — prototype / anatomy / blueprint view
+       ============================================================ -->
+  <section class="zs-ps-lab" data-ps-lab>
+    <div class="zs-studio-container">
+      <div class="zs-ps-lab-head">
+        <div>
+          <div class="zs-studio-kicker">
+            <span class="zs-mono-tag">02 — Structure Lab</span>
+            <span class="zs-studio-kicker-line"></span>
+          </div>
+          <h2 class="zs-ps-lab-title" data-ps-reveal>Every structure starts as a flat sheet.</h2>
+        </div>
+        <p class="zs-ps-lab-desc" data-ps-reveal>Choose a structure to see it as a prototype, broken into its labelled parts, or laid out as a conceptual blueprint.</p>
+      </div>
+
+      <div class="zs-ps-lab-grid">
+        <ul class="zs-ps-structs" data-ps-lab-list></ul>
+
+        <div class="zs-ps-stage" data-ps-lab-stage data-mode="prototype">
+          <div class="zs-ps-stage-modes">
+            <button type="button" class="zs-ps-mode-btn is-active" data-ps-mode="prototype" aria-pressed="true">Prototype</button>
+            <button type="button" class="zs-ps-mode-btn" data-ps-mode="anatomy" aria-pressed="false">Anatomy</button>
+          </div>
+          <button type="button" class="zs-ps-blueprint-toggle" data-ps-blueprint aria-pressed="false">Blueprint</button>
+
+          <div class="zs-ps-stage-media" data-ps-lab-media>
+            <div class="zs-ps-anatomy-layers" data-ps-lab-layers></div>
+          </div>
+
+          <div class="zs-ps-blueprint-overlay" aria-hidden="true"></div>
+          <p class="zs-ps-blueprint-note" data-ps-blueprint-note></p>
+        </div>
+
+        <div class="zs-ps-struct-meta">
+          <p class="zs-ps-struct-meta-name" data-ps-lab-name></p>
+          <p class="zs-ps-struct-meta-desc" data-ps-lab-desc></p>
+          <ul class="zs-ps-struct-meta-labels" data-ps-lab-labels></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       03 — HOW DOES IT OPEN — drag or press to open
+       ============================================================ -->
+  <section class="zs-ps-open" data-ps-open>
+    <div class="zs-studio-container zs-ps-open-inner">
+      <div class="zs-ps-open-copy">
+        <div class="zs-studio-kicker">
+          <span class="zs-mono-tag">03 — How Does It Open</span>
+          <span class="zs-studio-kicker-line"></span>
+        </div>
+        <h2 class="zs-ps-lab-title" data-ps-reveal>Structure isn't just the shape — it's the motion.</h2>
+        <p class="zs-ps-lab-desc" data-ps-reveal>Pick a structure, then drag the package on the right — or press the button — to see how it opens.</p>
+
+        <div class="zs-ps-open-select" data-ps-open-select></div>
+        <span class="zs-ps-open-status" data-ps-open-status>Closed</span>
+        <br>
+        <button type="button" class="zs-ps-open-btn" data-ps-open-toggle aria-pressed="false">Press To Open</button>
+      </div>
+
+      <div class="zs-ps-open-stage" data-ps-open-stage>
+        <div class="zs-ps-open-media" data-ps-open-media></div>
+        <div class="zs-ps-open-glow" aria-hidden="true"></div>
+        <p class="zs-ps-open-instructions">Drag up to open · drag down to close</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       04 — PURPOSE / SCENE TRANSFORMATION
+       ============================================================ -->
+  <section class="zs-ps-purpose" data-ps-purpose>
+    <div class="zs-studio-container zs-ps-purpose-inner">
+      <div>
+        <div class="zs-studio-kicker">
+          <span class="zs-mono-tag">04 — What Is It For</span>
+          <span class="zs-studio-kicker-line"></span>
+        </div>
+        <h2 class="zs-ps-lab-title" data-ps-reveal>Every box is built around a job.</h2>
+        <ul class="zs-ps-purpose-list" data-ps-purpose-list></ul>
+      </div>
+
+      <div class="zs-ps-purpose-media">
+        <div class="zs-ps-purpose-scene" data-ps-purpose-scene></div>
+        <p class="zs-ps-purpose-copy" data-ps-purpose-copy></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       05 — BUILD YOUR PACKAGING — configurator
+       ============================================================ -->
+  <section class="zs-ps-config" data-ps-config>
+    <div class="zs-studio-container">
+      <div class="zs-studio-kicker">
+        <span class="zs-mono-tag">05 — Build Your Packaging</span>
+        <span class="zs-studio-kicker-line"></span>
+      </div>
+      <h2 class="zs-ps-lab-title" data-ps-reveal>Put the pieces together.</h2>
+
+      <div class="zs-ps-config-grid">
+        <div>
+          <ol class="zs-ps-config-steps">
+            <li class="zs-ps-config-step">
+              <div class="zs-ps-config-step-head">
+                <span class="zs-ps-config-step-num">01</span>
+                <span class="zs-ps-config-step-name">Structure</span>
+              </div>
+              <div class="zs-ps-config-options" data-ps-config-group="structure"></div>
+            </li>
+            <li class="zs-ps-config-step">
+              <div class="zs-ps-config-step-head">
+                <span class="zs-ps-config-step-num">02</span>
+                <span class="zs-ps-config-step-name">Purpose</span>
+              </div>
+              <div class="zs-ps-config-options" data-ps-config-group="purpose"></div>
+            </li>
+            <li class="zs-ps-config-step">
+              <div class="zs-ps-config-step-head">
+                <span class="zs-ps-config-step-num">03</span>
+                <span class="zs-ps-config-step-name">Branding</span>
+              </div>
+              <div class="zs-ps-config-options" data-ps-config-group="branding"></div>
+            </li>
+            <li class="zs-ps-config-step">
+              <div class="zs-ps-config-step-head">
+                <span class="zs-ps-config-step-num">04</span>
+                <span class="zs-ps-config-step-name">Additions</span>
+              </div>
+              <div class="zs-ps-config-options" data-ps-config-group="additions"></div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="zs-ps-config-visual">
+          <div class="zs-ps-config-stack">
+            <div class="zs-ps-config-stack-layer" data-ps-layer="structure"></div>
+            <div class="zs-ps-config-stack-layer" data-ps-layer="branding"></div>
+            <div class="zs-ps-config-stack-layer" data-ps-layer="additions"></div>
+          </div>
+          <div class="zs-ps-config-summary">
+            <dl>
+              <dt>Structure</dt><dd data-ps-summary="structure">—</dd>
+              <dt>Purpose</dt><dd data-ps-summary="purpose">—</dd>
+              <dt>Branding</dt><dd data-ps-summary="branding">—</dd>
+              <dt>Additions</dt><dd data-ps-summary="additions">—</dd>
+            </dl>
+            <span class="zs-ps-config-ready" data-ps-config-ready style="display:none;">Ready to request a quote</span>
+            <a href="/contact.html#contact-form" class="zs-btn zs-btn--primary" data-ps-config-cta>Get A Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       06 — THE PACKAGING WORKBENCH — related print & finishing objects
+       ============================================================ -->
+  <section class="zs-ps-bench" data-ps-bench>
+    <div class="zs-studio-container">
+      <div class="zs-studio-kicker">
+        <span class="zs-mono-tag">06 — The Workbench</span>
+        <span class="zs-studio-kicker-line"></span>
+      </div>
+      <h2 class="zs-ps-lab-title" data-ps-reveal>Packaging is rarely just the box.</h2>
+
+      <div class="zs-ps-bench-desk" data-ps-bench-desk></div>
+
+      <div class="zs-ps-bench-info">
+        <h3 class="zs-ps-bench-info-name" data-ps-bench-name>Select an object</h3>
+        <p class="zs-ps-bench-info-desc" data-ps-bench-desc>Choose anything on the workbench to inspect it up close.</p>
+        <span class="zs-ps-bench-info-hint" data-ps-bench-hint></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       07 — WHAT DOES YOUR PRODUCT NEED — industry scenes
+       ============================================================ -->
+  <section class="zs-ps-industry" data-ps-industry>
+    <div class="zs-studio-container">
+      <div class="zs-studio-kicker">
+        <span class="zs-mono-tag">07 — What Does Your Product Need</span>
+        <span class="zs-studio-kicker-line"></span>
+      </div>
+      <h2 class="zs-ps-lab-title" data-ps-reveal>Built around your industry, not a stock template.</h2>
+
+      <div class="zs-ps-industry-inner">
+        <ul class="zs-ps-industry-rail" data-ps-industry-rail></ul>
+
+        <div class="zs-ps-industry-scene" data-ps-industry-scene>
+          <div class="zs-ps-industry-chips" data-ps-industry-chips></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       08 — FROM MATERIAL TO PACKAGE — process timeline
+       ============================================================ -->
+  <section class="zs-ps-process" data-ps-process>
+    <div class="zs-studio-container">
+      <div class="zs-studio-kicker">
+        <span class="zs-mono-tag">08 — From Material To Package</span>
+        <span class="zs-studio-kicker-line"></span>
+      </div>
+      <h2 class="zs-ps-lab-title" data-ps-reveal>Five steps from board to finished box.</h2>
+
+      <div class="zs-ps-process-track">
+        <div class="zs-ps-process-step">
+          <div class="zs-ps-process-dot"></div>
+          <div class="zs-ps-process-media">
+            <img src="/assets/img/06-zs-corrugated-cardboard-material.webp" alt="Raw corrugated board material" loading="lazy">
+          </div>
+          <span class="zs-ps-process-name">Raw Material</span>
+        </div>
+        <div class="zs-ps-process-step">
+          <div class="zs-ps-process-dot"></div>
+          <div class="zs-ps-process-media">
+            <img src="/assets/img/05-zs-cardboard-sheet-processing.webp" alt="Cardboard sheet being processed" loading="lazy">
+          </div>
+          <span class="zs-ps-process-name">Cutting &amp; Printing</span>
+        </div>
+        <div class="zs-ps-process-step">
+          <div class="zs-ps-process-dot"></div>
+          <div class="zs-ps-process-media">
+            <img src="/assets/img/01-zs-corrugated-box-set.webp" alt="Folded and glued corrugated boxes" loading="lazy">
+          </div>
+          <span class="zs-ps-process-name">Folding &amp; Gluing</span>
+        </div>
+        <div class="zs-ps-process-step">
+          <div class="zs-ps-process-dot"></div>
+          <div class="zs-ps-process-media">
+            <img src="/assets/img/05-zs-packaging-quality-inspection.webp" alt="Quality inspection of finished packaging" loading="lazy">
+          </div>
+          <span class="zs-ps-process-name">Quality Check</span>
+        </div>
+        <div class="zs-ps-process-step">
+          <div class="zs-ps-process-dot"></div>
+          <div class="zs-ps-process-media">
+            <img src="/assets/img/05-zs-palletized-cartons.webp" alt="Palletized finished cartons ready for delivery" loading="lazy">
+          </div>
+          <span class="zs-ps-process-name">Packed &amp; Shipped</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       09 — FINAL CTA
+       ============================================================ -->
+  <section class="zs-ps-cta" data-ps-cta>
+    <div class="zs-ps-cta-media" aria-hidden="true"></div>
+    <div class="zs-ps-cta-scrim" aria-hidden="true"></div>
+    <div class="zs-ps-cta-inner">
+      <span class="zs-ps-cta-eyebrow">Have A Packaging Project In Mind?</span>
+      <h2 class="zs-ps-cta-title">Let's turn your idea into packaging.</h2>
+      <div class="zs-ps-cta-actions">
+        <a href="/contact.html" class="zs-btn zs-btn--on-dark">Start A Project <span aria-hidden="true">→</span></a>
+        <a href="/product.html" class="zs-btn--text">
+          Explore Our Capabilities
+          <svg class="zs-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3.5 12.5L12.5 3.5M12.5 3.5H5.5M12.5 3.5V10.5" stroke="currentColor" stroke-width="1.4"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+
+<div id="footer-container"></div>
+
+<script src="/assets/js/navbar.js"></script>  <script src="/assets/js/animation.js"></script><script src="/assets/js/main.js"></script>
+<script src="/assets/js/studio.js"></script>
+<script src="/assets/js/footer.js"></script>
+</body>
+</html>
