@@ -135,6 +135,30 @@
 
 .zs-legal-section p:last-child { margin-bottom: 0; }
 
+.zs-legal-subtitle {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--zs-mocha-warm);
+  margin: 20px 0 8px;
+}
+
+.zs-legal-section h3.zs-legal-subtitle:first-child { margin-top: 0; }
+
+.zs-legal-placeholder {
+  display: inline;
+  color: var(--zs-mocha-warm);
+  font-style: italic;
+}
+
+.zs-legal-placeholder-note {
+  margin-top: 10px !important;
+  font-size: 13px !important;
+  font-style: italic;
+  color: var(--zs-mocha-warm) !important;
+}
+
 .zs-legal-section ul {
   margin: 0 0 14px;
   padding: 0;
