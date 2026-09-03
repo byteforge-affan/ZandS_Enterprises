@@ -356,7 +356,7 @@
   gap: 9px;
 }
 
-.zs-social-btn {
+a.zs-social-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -509,14 +509,14 @@
   line-height: 1.7;
 }
 
-.zs-footer-contact-link {
+a.zs-footer-contact-link {
   position: relative;
 
   display: inline-flex;
 
   width: fit-content;
 
-  color: var(--zs-text-muted);
+  color: var(--zs-ivory);
 
   font-size: 13.5px;
 
