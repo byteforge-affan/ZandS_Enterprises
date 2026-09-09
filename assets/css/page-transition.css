@@ -1,0 +1,127 @@
+/* ==========================================================================
+   Z&S ENTERPRISES — PAGE-TO-PAGE TRANSITION
+   A smaller, faster echo of the entrance animation's visual language:
+   two triangular panels (split along one diagonal, the same geometric
+   idea as the entrance's four-way fold) sweep across the viewport on
+   exit and continue sweeping onward to clear it on the next page's
+   entry — "current page → wipe → new page" instead of a blank flash.
+
+   Included on every page. Loaded on top of the shared design tokens
+   (--zs-*) from style.css — no new colors introduced.
+
+   Visible-but-inert by default (pointer-events: none, panels parked
+   off-viewport) so a missing/failed controller script never blocks a
+   link — see assets/js/page-transition.js.
+   ========================================================================== */
+
+.zs-pt {
+  position: fixed;
+  inset: 0;
+  z-index: 9990;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.zs-pt-panel {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+  transition: transform 240ms var(--zs-ease, ease);
+}
+
+.zs-pt-panel--a {
+  clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+  background: linear-gradient(135deg, var(--zs-forest) 0%, var(--zs-mocha-2) 100%);
+  transform: translate(-120%, -120%);
+}
+
+.zs-pt-panel--b {
+  clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
+  background: linear-gradient(-45deg, var(--zs-mocha-2) 0%, var(--zs-bg) 100%);
+  transform: translate(120%, 120%);
+}
+
+/* --------------------------------------------------------------------------
+   COVERING / COVERED
+   "covering" is the animated exit sweep (240ms). "covered" is the same
+   fully-covered end state applied instantly (no transition) — used to
+   pre-paint the incoming page so it never flashes blank white while its
+   own assets settle. Both end at the same transform, so the reveal below
+   always starts from a consistent, fully-covered frame.
+   -------------------------------------------------------------------------- */
+
+.zs-pt.is-covering .zs-pt-panel,
+.zs-pt.is-covered .zs-pt-panel {
+  transform: translate(0, 0);
+  pointer-events: auto;
+}
+
+.zs-pt.is-covered .zs-pt-panel {
+  transition: none;
+}
+
+/* --------------------------------------------------------------------------
+   REVEALING
+   Panels continue their original diagonal travel past the viewport,
+   clearing the new page — a continuation of the sweep, not a reversal.
+   -------------------------------------------------------------------------- */
+
+.zs-pt.is-revealing .zs-pt-panel {
+  transition: transform 320ms var(--zs-ease, ease);
+  pointer-events: none;
+}
+
+.zs-pt.is-revealing .zs-pt-panel--a {
+  transform: translate(120%, 120%);
+}
+
+.zs-pt.is-revealing .zs-pt-panel--b {
+  transform: translate(-120%, -120%);
+}
+
+/* --------------------------------------------------------------------------
+   REDUCED MOTION
+   No panel geometry, no diagonal sweep — a single quiet dim, well under
+   150ms, then gone.
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  /* Every override below repeats the exact selector it's cancelling
+     (rather than relying on a lower-specificity catch-all) so it reliably
+     wins the cascade against the geometry/state rules above — a bare
+     ".zs-pt-panel { transform: none }" would lose to the more specific
+     ".zs-pt-panel--a" and ".zs-pt.is-covering .zs-pt-panel" rules and the
+     triangle geometry would still animate underneath the fade. */
+
+  .zs-pt-panel,
+  .zs-pt-panel--a,
+  .zs-pt-panel--b {
+    clip-path: none;
+    transform: none;
+    background: var(--zs-bg);
+    opacity: 0;
+    transition: opacity 100ms linear;
+  }
+
+  .zs-pt.is-covering .zs-pt-panel,
+  .zs-pt.is-covered .zs-pt-panel {
+    transform: none;
+    opacity: 1;
+  }
+
+  .zs-pt.is-covered .zs-pt-panel {
+    transition: none;
+  }
+
+  .zs-pt.is-revealing .zs-pt-panel,
+  .zs-pt.is-revealing .zs-pt-panel--a,
+  .zs-pt.is-revealing .zs-pt-panel--b {
+    transform: none;
+    opacity: 0;
+    transition: opacity 100ms linear;
+  }
+}
+
+/* .zs-pt is fixed/full-viewport with overflow:hidden and every panel is
+   inset:0, so this can never contribute to document horizontal scroll on
+   any breakpoint — no separate mobile rules are needed. */

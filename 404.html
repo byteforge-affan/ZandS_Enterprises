@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found | Z&amp;S Enterprises</title>
+<meta name="description" content="The page you're looking for can't be found. Return to the Z&S Enterprises homepage or get in touch for a packaging quotation.">
+<meta property="og:title" content="Page Not Found | Z&amp;S Enterprises">
+<meta property="og:description" content="The page you're looking for can't be found. Return to the Z&S Enterprises homepage or get in touch for a packaging quotation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.zspackages.com/404.html">
+<meta property="og:image" content="https://www.zspackages.com/assets/img/logo.png">
+<meta property="og:site_name" content="Z&amp;S Enterprises">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Page Not Found | Z&amp;S Enterprises">
+<meta name="twitter:description" content="The page you're looking for can't be found. Return to the Z&S Enterprises homepage or get in touch for a packaging quotation.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#FBF8F1">
+<link rel="canonical" href="https://www.zspackages.com/404.html">
+<link rel="icon" href="/assets/img/favicon-64.png" type="image/png" sizes="64x64">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>(function(){try{if(sessionStorage.getItem("zsPageTransitionIncoming")==="1"){document.documentElement.classList.add("zs-pt-incoming");}}catch(e){}})();</script>
+<link rel="stylesheet" href="/assets/css/page-transition.css">
+<link rel="stylesheet" href="/assets/css/navbar.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/responsive.css">
+<link rel="stylesheet" href="/assets/css/footer.css">
+
+<!-- ==========================================================================
+     404 PAGE — scoped styles. Kept inline (rather than a new stylesheet) since
+     this is the only page that needs them; reuses existing brand tokens,
+     typography, container and .zs-btn classes from style.css.
+     ========================================================================== -->
+<style>
+  .zs-404 {
+    padding-top: var(--zs-nav-clearance);
+    background: var(--zs-cream);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .zs-404-inner {
+    position: relative;
+    width: 100%;
+    padding: 64px 0 90px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  /* faint dot-grid field behind the numeral, consistent with the site's
+     other full-bleed hero treatments */
+  .zs-404-field {
+    position: absolute;
+    inset: -10% -5% auto -5%;
+    height: 480px;
+    background-image: radial-gradient(var(--zs-line-soft) 1px, transparent 1px);
+    background-size: 28px 28px;
+    -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 30%, #000 0%, transparent 75%);
+    mask-image: radial-gradient(ellipse 60% 55% at 50% 30%, #000 0%, transparent 75%);
+    pointer-events: none;
+  }
+
+  .zs-404-content {
+    position: relative;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  .zs-404-eyebrow {
+    justify-content: center;
+  }
+
+  .zs-404-numeral {
+    margin: 22px 0 6px;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(96px, 20vw, 190px);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--zs-charcoal);
+    background: linear-gradient(180deg, var(--zs-gold) 0%, var(--zs-mocha-warm) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  /* subtle die-cut notch flanking the numeral — a small nod to packaging
+     structure lines, not a literal illustration */
+  .zs-404-crease {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .zs-404-crease span {
+    width: 44px;
+    height: 1px;
+    background: var(--zs-gold-line);
+  }
+
+  .zs-404-crease svg { color: var(--zs-mocha-warm); flex-shrink: 0; }
+
+  .zs-404-title {
+    font-size: clamp(26px, 3.6vw, 38px);
+  }
+
+  .zs-404-text {
+    margin: 18px auto 0;
+    max-width: 460px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--zs-charcoal-soft);
+  }
+
+  .zs-404-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 36px;
+  }
+
+  /* ---- entrance animation ---- */
+  .zs-404-reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: zs404FadeUp 700ms var(--zs-ease) forwards;
+  }
+
+  .zs-404-reveal--1 { animation-delay: 60ms; }
+  .zs-404-reveal--2 { animation-delay: 160ms; }
+  .zs-404-reveal--3 { animation-delay: 260ms; }
+  .zs-404-reveal--4 { animation-delay: 340ms; }
+  .zs-404-reveal--5 { animation-delay: 420ms; }
+
+  @keyframes zs404FadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .zs-404-reveal {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .zs-404-field { height: 360px; }
+    .zs-404-actions { flex-direction: column; }
+    .zs-404-actions .zs-btn { width: 100%; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Page Not Found",
+  "url": "https://www.zspackages.com/404.html",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Z&S Enterprises",
+    "url": "https://www.zspackages.com/"
+  }
+}
+</script>
+</head>
+<body>
+  <div id="zsPageTransition" class="zs-pt" role="presentation" aria-hidden="true">
+    <div class="zs-pt-panel zs-pt-panel--a" aria-hidden="true"></div>
+    <div class="zs-pt-panel zs-pt-panel--b" aria-hidden="true"></div>
+  </div>
+  <script src="/assets/js/page-transition.js"></script>
+
+<div id="navbar-container"></div>
+
+<main class="zs-404">
+  <div class="zs-404-inner zs-container">
+    <div class="zs-404-field" aria-hidden="true"></div>
+
+    <div class="zs-404-content">
+      <span class="zs-eyebrow zs-404-eyebrow zs-404-reveal zs-404-reveal--1">Z&amp;S Enterprises</span>
+
+      <p class="zs-404-numeral zs-404-reveal zs-404-reveal--2" aria-hidden="true">404</p>
+
+      <div class="zs-404-crease zs-404-reveal zs-404-reveal--3">
+        <span aria-hidden="true"></span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 8.5 12 4l8 4.5v7L12 20l-8-4.5v-7Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          <path d="M4 8.5 12 13l8-4.5M12 13v7" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        </svg>
+        <span aria-hidden="true"></span>
+      </div>
+
+      <h1 class="zs-heading-lg zs-404-title zs-404-reveal zs-404-reveal--3">Page Not Found</h1>
+
+      <p class="zs-404-text zs-404-reveal zs-404-reveal--4">
+        The page you're looking for may have been moved, renamed, or no longer exists.
+        Head back to the homepage, or reach out and we'll help you find what you need.
+      </p>
+
+      <div class="zs-404-actions zs-404-reveal zs-404-reveal--5">
+        <a href="/index.html" class="zs-btn zs-btn--primary">Back to Home</a>
+        <a href="/contact.html" class="zs-btn zs-btn--ghost">Request a Quotation</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="footer-container"></div>
+
+<script src="/assets/js/navbar.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/footer.js"></script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+/* ==========================================================================
+   Z&S ENTERPRISES — ENTRANCE ANIMATION
+   Concept: PACKAGE → REVEAL → Z&S → WEBSITE.
+
+   Four full-bleed triangular "flap" panels (built with clip-path, split
+   from the viewport's own diagonals) sit closed over a dark studio
+   backdrop, like a carton folded shut. They fold open toward the four
+   edges to reveal the Z&S brand mark on the backdrop, then the whole
+   overlay dissolves to "unbox" the actual homepage underneath.
+
+   Fully isolated. Every selector is namespaced .zs-entrance / .zs-ent-*
+   so it cannot collide with existing site styles. Reuses the site's own
+   design tokens (--zs-*) from style.css — no new colors introduced.
+
+   Only transform/opacity are animated (GPU-friendly). clip-path shapes
+   are static per panel, never animated.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   OVERLAY SHELL
+   Visible-but-transparent by default (not display:none) so that if the
+   controller script never runs — blocked, errors, whatever — the overlay
+   stays inert and the homepage underneath is fully usable. JS opts it *in*.
+   -------------------------------------------------------------------------- */
+
+.zs-entrance {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 500ms var(--zs-ease, ease);
+}
+
+.zs-entrance.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.zs-entrance.phase-exit {
+  opacity: 0;
+}
+
+.zs-entrance.zs-entrance--done {
+  display: none;
+}
+
+body.zs-entrance-lock {
+  overflow: hidden;
+  height: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   BACKDROP
+   The dark "studio" surface the flaps sit on top of and fold open onto.
+   Holds the brand mark. Fades away in phase-exit, unboxing the real
+   (light) homepage from underneath.
+   -------------------------------------------------------------------------- */
+
+.zs-ent-backdrop {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 100% at 50% 42%, var(--zs-mocha-2) 0%, var(--zs-bg) 62%, #0A0F0C 100%);
+}
+
+/* --------------------------------------------------------------------------
+   FLAP PANELS
+   Four triangles (the viewport split by its own diagonals) that together
+   tile the screen exactly — an abstract, folded-carton read rather than a
+   literal box. Each folds outward toward the edge it borders.
+   -------------------------------------------------------------------------- */
+
+.zs-ent-panel {
+  position: absolute;
+  inset: 0;
+  will-change: transform, opacity;
+  transition: transform 700ms var(--zs-ease, ease), opacity 500ms var(--zs-ease, ease);
+}
+
+.zs-ent-panel--top {
+  clip-path: polygon(0% 0%, 100% 0%, 50% 50%);
+  background: linear-gradient(180deg, var(--zs-forest-soft) 0%, var(--zs-mocha-2) 100%);
+  transform-origin: 50% 0%;
+}
+
+.zs-ent-panel--right {
+  clip-path: polygon(100% 0%, 100% 100%, 50% 50%);
+  background: linear-gradient(270deg, var(--zs-mocha-2) 0%, var(--zs-bg) 100%);
+  transform-origin: 100% 50%;
+}
+
+.zs-ent-panel--bottom {
+  clip-path: polygon(100% 100%, 0% 100%, 50% 50%);
+  background: linear-gradient(0deg, var(--zs-forest) 0%, var(--zs-mocha-2) 100%);
+  transform-origin: 50% 100%;
+}
+
+.zs-ent-panel--left {
+  clip-path: polygon(0% 100%, 0% 0%, 50% 50%);
+  background: linear-gradient(90deg, var(--zs-mocha) 0%, var(--zs-bg) 100%);
+  transform-origin: 0% 50%;
+}
+
+.zs-entrance.phase-open .zs-ent-panel--top {
+  transform: translateY(-120%) rotate(-1.5deg);
+}
+
+.zs-entrance.phase-open .zs-ent-panel--right {
+  transform: translateX(120%) rotate(1.5deg);
+}
+
+.zs-entrance.phase-open .zs-ent-panel--bottom {
+  transform: translateY(120%) rotate(1.5deg);
+}
+
+.zs-entrance.phase-open .zs-ent-panel--left {
+  transform: translateX(-120%) rotate(-1.5deg);
+}
+
+/* A last, gentle push once the exit begins — the flaps keep travelling
+   outward as the whole overlay dissolves, instead of stopping dead. */
+.zs-entrance.phase-exit .zs-ent-panel--top {
+  transform: translateY(-140%) rotate(-1.5deg);
+}
+
+.zs-entrance.phase-exit .zs-ent-panel--right {
+  transform: translateX(140%) rotate(1.5deg);
+}
+
+.zs-entrance.phase-exit .zs-ent-panel--bottom {
+  transform: translateY(140%) rotate(1.5deg);
+}
+
+.zs-entrance.phase-exit .zs-ent-panel--left {
+  transform: translateX(-140%) rotate(-1.5deg);
+}
+
+/* --------------------------------------------------------------------------
+   SEAMS
+   Two thin dashed diagonal creases at the panel joins — an echo of the
+   dieline / registration-mark motif already used in the homepage hero.
+   Present only for the brief closed moment, then fade as the flaps open.
+   -------------------------------------------------------------------------- */
+
+.zs-ent-seam {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150vmax;
+  height: 0;
+  border-top: 1px dashed var(--zs-gold-line, rgba(201, 166, 107, 0.5));
+  opacity: 0;
+  transition: opacity 260ms var(--zs-ease, ease);
+}
+
+.zs-ent-seam--a {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.zs-ent-seam--b {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.zs-entrance.is-visible .zs-ent-seam {
+  opacity: 1;
+  transition-delay: 60ms;
+}
+
+.zs-entrance.phase-open .zs-ent-seam {
+  opacity: 0;
+  transition-delay: 0ms;
+}
+
+/* --------------------------------------------------------------------------
+   BRAND REVEAL
+   Sits on the backdrop, beneath the closed flaps. Fades/scales in once
+   the flaps have opened enough to clear it.
+   -------------------------------------------------------------------------- */
+
+.zs-ent-brand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  max-width: 90vw;
+  padding: 0 16px;
+  opacity: 0;
+  transform: translate(-50%, -46%) scale(0.94);
+  transition: opacity 560ms var(--zs-ease, ease), transform 560ms var(--zs-ease, ease);
+}
+
+.zs-entrance.phase-brand .zs-ent-brand {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.zs-ent-logo {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  opacity: 0.96;
+}
+
+.zs-ent-name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 5.5vw, 56px);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: var(--zs-ivory);
+  text-align: center;
+}
+
+.zs-ent-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: clamp(12px, 1.5vw, 15px);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--zs-gold);
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   REDUCED MOTION
+   No flap-fold sequence. The brand mark appears directly on the backdrop
+   with a very short fade, then the whole overlay dissolves.
+   -------------------------------------------------------------------------- */
+
+.zs-entrance--reduced .zs-ent-panel,
+.zs-entrance--reduced .zs-ent-seam {
+  display: none;
+}
+
+.zs-entrance--reduced .zs-ent-brand {
+  transition-duration: 260ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zs-entrance {
+    transition-duration: 260ms !important;
+  }
+
+  .zs-ent-panel,
+  .zs-ent-seam {
+    display: none;
+  }
+
+  .zs-ent-brand {
+    transition-duration: 260ms !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   MOBILE
+   Panel geometry is percentage/clip-path based and already scales safely
+   to any viewport with zero overflow risk. Only the brand block needs
+   tightening on small screens.
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+  .zs-ent-brand {
+    gap: 12px;
+  }
+
+  .zs-ent-logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .zs-ent-name {
+    font-size: clamp(26px, 9vw, 34px);
+  }
+
+  .zs-ent-tag {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+}
+
+/* .zs-entrance is fixed/full-viewport with overflow:hidden; every panel is
+   inset:0 and clipped, so nothing here can ever contribute to document
+   horizontal scroll on any breakpoint. */
