@@ -706,6 +706,10 @@ document.addEventListener("DOMContentLoaded", function () {
       successEl.setAttribute("tabindex", "-1");
       successEl.focus();
     }
+    // Meta Pixel: only fires once the project request has actually been
+    // accepted by Formspree (result.ok in submitForm) — never on a failed
+    // or merely-attempted submission.
+    if (typeof fbq === "function") fbq("track", "Lead");
   }
 
   function resetForNewRequest() {
@@ -1077,4 +1081,18 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   updateFloatIndex();
 
+});
+
+//==================== META PIXEL — CONTACT EVENT (tel / mailto / WhatsApp) =======================//
+// Fires the "Contact" standard event whenever a visitor actually clicks a real
+// contact action — a phone link, an email link, or a WhatsApp link — anywhere
+// on the site. Uses a single delegated listener on document so it also catches
+// the links inside the navbar/footer, which are injected after fetch() above.
+// Does not alter the tel:/mailto:/wa.me hrefs themselves, so the browser's
+// default behaviour (opening the dialer, mail client or WhatsApp) is untouched.
+document.addEventListener("click", function (e) {
+  if (typeof fbq !== "function") return;
+  var link = e.target.closest('a[href^="tel:"], a[href^="mailto:"], a[href*="wa.me"]');
+  if (!link) return;
+  fbq("track", "Contact");
 });

@@ -458,6 +458,7 @@
 
     var readyEl = section.querySelector("[data-ps-config-ready]");
     var ctaEl = section.querySelector("[data-ps-config-cta]");
+    var hasFiredCustomizePixel = false;
 
     Object.keys(groups).forEach(function (key) {
       var g = groups[key];
@@ -495,6 +496,18 @@
 
       var allSet = groups.structure.value && groups.purpose.value && groups.branding.value;
       if (readyEl) readyEl.style.display = allSet ? "" : "none";
+
+      // Meta Pixel: fire "CustomizeProduct" once per visit, the first time
+      // the visitor has actually built out a real configuration (structure +
+      // purpose + branding all chosen) in this genuine product configurator —
+      // not on every option click.
+      if (allSet && !hasFiredCustomizePixel && typeof fbq === "function") {
+        hasFiredCustomizePixel = true;
+        fbq("track", "CustomizeProduct", {
+          content_name: groups.structure.value,
+          content_category: "Packaging Configurator"
+        });
+      }
 
       if (ctaEl) {
         var params = [];

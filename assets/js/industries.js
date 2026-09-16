@@ -104,7 +104,21 @@
       if (empty) empty.classList.toggle("is-visible", visibleCount === 0);
     }
 
-    if (search) search.addEventListener("input", applyFilters);
+    // Meta Pixel: fire "Search" for genuine industry searches only — after
+    // the visitor pauses typing (debounced) and only when there's an actual,
+    // non-empty term. Never fires on page load or when the box is cleared.
+    var searchPixelTimer = null;
+    function trackSearchPixel() {
+      if (typeof fbq !== "function" || !search) return;
+      var term = search.value.trim();
+      if (!term) return;
+      window.clearTimeout(searchPixelTimer);
+      searchPixelTimer = window.setTimeout(function () {
+        fbq("track", "Search", { search_string: term, content_category: "Industries" });
+      }, 700);
+    }
+
+    if (search) search.addEventListener("input", function () { applyFilters(); trackSearchPixel(); });
 
     filterBtns.forEach(function (btn) {
       btn.addEventListener("click", function () {

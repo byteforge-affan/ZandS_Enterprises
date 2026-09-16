@@ -1013,6 +1013,20 @@
         window.scrollTo({ top: top, behavior: reduceMotion ? "auto" : "smooth" });
       }
     }
+
+    // Meta Pixel: this is the closest equivalent this single-page product
+    // explorer has to "opening a product page" — the visitor has explicitly
+    // chosen to view a specific packaging structure's detail panel (via the
+    // explorer tabs or a product-directory row). Never fires on initial page
+    // load, since activateStructure() is only ever called from those clicks.
+    if (typeof fbq === "function") {
+      var activePanel = productsRoot.querySelector('.zs-structure-panel[data-panel="' + key + '"]');
+      var titleEl = activePanel ? activePanel.querySelector(".zs-structure-title") : null;
+      fbq("track", "ViewContent", {
+        content_name: titleEl ? titleEl.textContent : key,
+        content_category: "Product Structure"
+      });
+    }
   }
 
   explorerItems.forEach(function (btn) {
@@ -1194,8 +1208,22 @@
     if (dirEmpty) dirEmpty.hidden = visibleCount !== 0;
   }
 
+  // Meta Pixel: fire "Search" for genuine product-directory searches only —
+  // after the visitor pauses typing (debounced) and only when there's an
+  // actual, non-empty term. Never fires on page load or when cleared.
+  var dirSearchPixelTimer = null;
+  function trackDirectorySearchPixel() {
+    if (typeof fbq !== "function" || !dirSearch) return;
+    var term = dirSearch.value.trim();
+    if (!term) return;
+    window.clearTimeout(dirSearchPixelTimer);
+    dirSearchPixelTimer = window.setTimeout(function () {
+      fbq("track", "Search", { search_string: term, content_category: "Product Directory" });
+    }, 700);
+  }
+
   if (dirSearch) {
-    dirSearch.addEventListener("input", applyDirectoryFilter);
+    dirSearch.addEventListener("input", function () { applyDirectoryFilter(); trackDirectorySearchPixel(); });
   }
 
   dirFilterButtons.forEach(function (btn) {
